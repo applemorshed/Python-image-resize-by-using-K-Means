@@ -1,58 +1,15 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import numpy
 import matplotlib.pyplot as plt
 
-
-# In[ ]:
-
-
-# NOTE: You should not change this cell
-
 class KMeans:
-    """ Simple K-Means implementation. Note that you can access
-    the cluster means and the cluster assignments once you have
-    called the "fit" function. The cluster means are stored in the
-    variable 'cluster_means' and the assignments to the cluster
-    means in 'cluster_assignments'. You can also use the function
-    'assign_to_clusters' to obtain such assignments for a new set
-    X of points.
-    """
 
     def __init__(self, n_clusters=2, max_iter=100, seed=0, verbose=0):
-        """ Constructor for the model.
-
-        Parameters
-        ----------
-        n_clusters : int
-            The number of clusters that should be
-            found via the K-Means clustering approach.
-        max_iter : int
-            The maximum number of iterations (stopping condition)
-        seed : int
-            Number that is used to initialize the random
-            number generator.
-        """
-
+       
         self.n_clusters = n_clusters
         self.max_iter = max_iter
         self.seed = seed
 
     def fit(self, X):
-        """
-        Fits the K-Means model. The final cluster assignments
-        (i.e., the indices) and the cluster means are stored
-        in the variables 'cluster_assignments' and 'cluster_means',
-        respectively, see the end of this function.
-
-        Parameters
-        ----------
-        X : Array of shape [n_samples, n_features]
-        """
 
         # initialize the random number generator
         numpy.random.seed(self.seed)
@@ -84,25 +41,7 @@ class KMeans:
         self.cluster_means = cluster_means
 
     def assign_to_clusters(self, X, means):
-        """
-        Assigns all the points given in X to the
-        means; returns a Numpy array containing the
-        assignments.
-
-        Parameters
-        ----------
-        X : Array of shape [n_samples, n_features]
-            The points for which the cluster assignments
-            shall be computed.
-        means : Array of shape [n_clusters, n_features]
-            The cluster means.
-
-        Returns
-        -------
-        assignments : Array of length n_samples
-            For each element in X, it should contain
-            the index of its closest cluster mean.
-        """
+       
 
         assignments = []
 
@@ -172,9 +111,6 @@ class KMeans:
         return d
 
 
-# In[ ]:
-
-
 # 3 a)
 
 old_f = numpy.loadtxt('old_faithful.csv', delimiter=',', skiprows=1)
@@ -215,19 +151,9 @@ plt.title('Scatter plot of old faithful geyser dataset and mean')
 # up_mean = model._update_means(old_f, cluster_means_a, Ass_to_clu)
 # print(up_mean)
 
-# TODO: Load and visualize the 'Old Faithful' dataset (2d scatter plot)
-# TODO: Apply K-Means and report the cluster means
-
-
-# In[ ]:
-
 
 # 3 b)
 
-# TODO: Load and plot the image "copenhagen_tiny.jpg";
-# you can, for instance, make use matplotlib's
-# 'imread' and 'imshow' functions.
-#
 import matplotlib.image as mpimg
 #from PIL import image
 copenhagen_tiny = mpimg.imread('copenhagen_tiny.jpg')
@@ -255,15 +181,6 @@ plt.imshow(assign_b.reshape(x, y))
 
 plt.title('Copenhagen_tiny image for five Cluster')
 
-
-# TODO: Segment the image by searching for 5 clusters
-# in the RGB space (see slide 21 of L13); use
-# 'max_iter=5' and 'seed=0' as parameters.
-# (1) What are the cluster means?
-# (2) Plot the resulting segmented image
-
-
-# In[ ]:
 
 
 # 3 c)
@@ -323,12 +240,4 @@ plt.title('Copenhagen image for 16 Cluster')
 plt.show()
 
 
-# TODO: Segment the image 'copenhagen.jgp' in a similar
-# fashion (using n_clusters=16, max_iter=5, seed=0). Instead
-# of using all data points/pixels, consider a random subset of
-# size 5000 to fit the k-means model and to find suitable cluster
-# centers. You can use the numpy.random.choice function to select
-# a random subset of indices (without replacement).
 
-
-# In[ ]:
